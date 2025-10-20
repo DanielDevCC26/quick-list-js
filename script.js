@@ -4,13 +4,14 @@ const botaoAdicionar = document.querySelector('button[type="button"]');
 const lista = document.getElementById('lista');
 const mensagem = document.getElementById('mensagem-alerta');
 
-
 // Função para mostrar alerta visual na parte inferior
 function mostrarMensagem(texto) {
   mensagem.textContent = texto;
   mensagem.classList.add('visivel');
 
-  setTimeout(() => {
+  // Remove após 2 segundos
+  clearTimeout(mensagem._timeout);
+  mensagem._timeout = setTimeout(() => {
     mensagem.classList.remove('visivel');
   }, 2000);
 }
@@ -49,8 +50,9 @@ function adicionarItem() {
 
   // Configura o botão de remover
   botaoRemover.classList.add('remover');
+  botaoRemover.setAttribute('aria-label', `Remover ${textoDigitado}`);
   iconeLixeira.src = 'styles/assets/trash.svg';
-  iconeLixeira.alt = 'Remover';
+  iconeLixeira.alt = 'Remover item';
   iconeLixeira.width = 16;
   botaoRemover.appendChild(iconeLixeira);
 
@@ -62,13 +64,11 @@ function adicionarItem() {
 
   // Evento de marcar/desmarcar item
   checkbox.addEventListener('change', () => {
-    if (checkbox.checked) {
-      li.classList.add('concluido');
-      mostrarMensagem(`"${textoDigitado}" foi marcado como concluído`);
-    } else {
-      li.classList.remove('concluido');
-      mostrarMensagem(`"${textoDigitado}" foi desmarcado`);
-    }
+    const concluido = checkbox.checked;
+    li.classList.toggle('concluido', concluido);
+    mostrarMensagem(
+      `"${textoDigitado}" foi ${concluido ? 'marcado como concluído' : 'desmarcado'}`
+    );
   });
 
   // Monta a estrutura do item
@@ -87,9 +87,10 @@ function adicionarItem() {
 // Adiciona item ao clicar no botão
 botaoAdicionar.addEventListener('click', adicionarItem);
 
-// Adiciona item ao pressionar Enter
-inputNovoItem.addEventListener('keypress', (event) => {
+// Adiciona item ao pressionar Enter (desktop) ou Enter no teclado mobile
+inputNovoItem.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
+    event.preventDefault(); // evita envio de formulário em mobile
     adicionarItem();
   }
 });

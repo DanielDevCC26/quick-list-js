@@ -1,4 +1,6 @@
-/* Reset básico */
+/* =====================
+   RESET E VARIÁVEIS
+   ===================== */
 * {
   margin: 0;
   padding: 0;
@@ -28,7 +30,9 @@
   --border-hover: #b9c2d0;
 }
 
-
+/* =====================
+   BASE DESKTOP
+   ===================== */
 body {
   font-family: var(--font-family);
   background-color: #f9dce2;
@@ -39,14 +43,13 @@ body {
   min-height: 100vh;
   padding: 20px;
   background-image: 
-  
-  repeating-linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.4) 0px,
-    rgba(255, 255, 255, 0.4) 40px,
-    transparent 40px,
-    transparent 80px
-  );
+    repeating-linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.4) 0px,
+      rgba(255, 255, 255, 0.4) 40px,
+      transparent 40px,
+      transparent 80px
+    );
 }
 
 header {
@@ -63,7 +66,9 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Input e botão lado a lado */
+/* =====================
+   INPUT + BOTÃO
+   ===================== */
 .input-container {
   display: flex;
   gap: 10px;
@@ -97,7 +102,9 @@ h1 {
   background-color: var(--color-brand-hover);
 }
 
-/* Lista de itens */
+/* =====================
+   LISTA DE ITENS
+   ===================== */
 ul {
   list-style: none;
   width: 100%;
@@ -133,7 +140,9 @@ ul li button.remover {
   cursor: pointer;
 }
 
-/* Mensagem alerta inferior */
+/* =====================
+   MENSAGEM ALERTA
+   ===================== */
 #mensagem-alerta {
   position: fixed;
   bottom: 20px;
@@ -158,4 +167,83 @@ ul li button.remover {
 input.erro {
   border: 2px solid var(--color-danger);
   outline: none;
+}
+
+/* =====================
+   MEDIA QUERIES
+   ===================== */
+
+/* Tablets (≤ 1024px) */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .input-container {
+    max-width: 90%;
+  }
+
+  ul {
+    max-width: 90%;
+  }
+}
+
+/* Celulares grandes (≤ 768px) */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1.3rem;
+  }
+
+  .input-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    max-width: 100%;
+  }
+
+  .input-container input,
+  .input-container button {
+    width: 100%;
+  }
+
+  ul li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  ul li button.remover {
+    align-self: flex-end;
+  }
+}
+
+/* Celulares pequenos (≤ 480px) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.1rem;
+  }
+
+  .input-container input {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  .input-container button {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  ul li {
+    padding: 8px 10px;
+  }
+
+  #mensagem-alerta {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
 }
