@@ -6,20 +6,60 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@500&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="styles/style.css">
   <title>Compras da semana</title>
 </head>
 <body>
   <header>
-    <h1>Compras da semana</h1>
+    <img src="styles/assets/logo.svg" alt="Logo Quicklist">
   </header>
-  
-  <script src="script.js">
 
-  </script>
+  <h1>Compras da semana</h1>
+
+  <div class="input-container">
+    <input 
+      type="text" 
+      id="novo-item" 
+      name="novo-item" 
+      placeholder="Adicione um novo item">
+    <button type="button" id="adicionar">Adicionar item</button>
+  </div>
+
+  <ul id="lista">
+    <li>
+      <input type="checkbox" id="pao" name="pao">
+      <label for="pao">Pão de forma</label>
+      <button class="remover">
+        <img src="styles/assets/trash.svg" alt="Remover" width="16">
+      </button>
+    </li>
+    <li>
+      <input type="checkbox" id="cafe" name="cafe">
+      <label for="cafe">Café preto</label>
+      <button class="remover">
+        <img src="styles/assets/trash.svg" alt="Remover" width="16">
+      </button>
+    </li>
+    <li>
+      <input type="checkbox" id="suco" name="suco">
+      <label for="suco">Suco de laranja</label>
+      <button class="remover">
+        <img src="styles/assets/trash.svg" alt="Remover" width="16">
+      </button>
+    </li>
+    <li>
+      <input type="checkbox" id="bolacha" name="bolacha">
+      <label for="bolacha">Bolacha</label>
+      <button class="remover">
+        <img src="styles/assets/trash.svg" alt="Remover" width="16">
+      </button>
+    </li>
+  </ul>
+
+  <div id="mensagem-alerta"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>

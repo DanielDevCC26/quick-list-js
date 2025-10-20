@@ -1,1 +1,161 @@
-@import url(style.css);
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-family: "Inter", sans-serif;
+  --title: 700 1.5rem/2 var(--font-family);      
+  --label: 600 1rem/1.25 var(--font-family);     
+  --paragraph: 500 1rem/1.25 var(--font-family); 
+  --link: 500 0.875rem/1 var(--font-family);
+
+  --background-primary: #f4f5fb;
+  --background-secondary: #ffffff;
+
+  --color-brand: #ca3884;
+  --color-brand-hover: #a52c6b;
+  --color-danger: #c93847;
+
+  --content-primary: #080b12;
+  --content-secondary: #374151;
+  --content-tertiary: #9ca3af;
+  --always-white: #ffffff;
+
+  --border-primary: #d1d5db;
+  --border-hover: #b9c2d0;
+}
+
+
+body {
+  font-family: var(--font-family);
+  background-color: #f9dce2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  background-image: 
+  
+  repeating-linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.4) 0px,
+    rgba(255, 255, 255, 0.4) 40px,
+    transparent 40px,
+    transparent 80px
+  );
+}
+
+header {
+  display: flex;
+  align-items: center;       
+  justify-content: center;   
+  padding-top: 20px;         
+  margin-bottom: 20px;
+}
+
+h1 {
+  font: var(--title);
+  color: var(--content-primary);
+  margin-bottom: 20px;
+}
+
+/* Input e botão lado a lado */
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  font-family: var(--font-family);
+  font-size: 1rem;
+}
+
+.input-container button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--color-brand);
+  color: var(--always-white);
+  font-family: var(--font-family);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.input-container button:hover {
+  background-color: var(--color-brand-hover);
+}
+
+/* Lista de itens */
+ul {
+  list-style: none;
+  width: 100%;
+  max-width: 400px;
+}
+
+ul li {
+  border: 1px solid var(--border-primary);
+  border-radius: 16px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ul li label {
+  margin-left: 8px;
+  flex: 1;
+}
+
+ul li.concluido label {
+  text-decoration: line-through;
+  color: #c93847;
+  opacity: 0.7;
+}
+
+/* Botão remover */
+ul li button.remover {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mensagem alerta inferior */
+#mensagem-alerta {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #323232;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#mensagem-alerta.visivel {
+  opacity: 1;
+}
+
+/* Input com erro */
+input.erro {
+  border: 2px solid var(--color-danger);
+  outline: none;
+}
